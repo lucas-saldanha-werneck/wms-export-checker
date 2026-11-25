@@ -1,0 +1,30 @@
+{
+  "tables": {
+    "skus": {
+      "key": "sku",
+      "columns": {
+        "sku": {"type": "str", "required": true},
+        "description": {"type": "str", "required": true},
+        "unit": {"type": "str", "required": true},
+        "weight_kg": {"type": "decimal", "required": true, "min": 0}
+      }
+    },
+    "inbound_lines": {
+      "key": "line_id",
+      "columns": {
+        "line_id": {"type": "str", "required": true},
+        "po_number": {"type": "str", "required": true},
+        "sku": {"type": "str", "required": true},
+        "qty": {"type": "int", "required": true, "min": 1},
+        "unit": {"type": "str", "required": true},
+        "received_on": {"type": "date", "required": true}
+      }
+    }
+  },
+  "foreign_keys": [
+    {"from": "inbound_lines", "column": "sku", "to": "skus", "to_column": "sku"}
+  ],
+  "unit_consistency": [
+    {"table": "inbound_lines", "key": "sku", "unit": "unit"}
+  ]
+}

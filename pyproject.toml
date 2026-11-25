@@ -1,0 +1,8 @@
+[project]
+name = "wms-export-checker"
+version = "0.1.0"
+description = "Check a warehouse CSV export before an integration goes live"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
